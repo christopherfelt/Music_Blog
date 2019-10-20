@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{#{% load staticfiles %}#}
+
+{% block content %}
+    <div class="col col-6 card-libary edit-border" align="center">
+        <div class="row justify-content-center">
+
+    {% for post in post_list %}
+
+            <div class="col col-lg-4">
+                <div class="card" style="width: 14em;">
+                    <img src="{{ post.post_image.url }}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.text|truncatewords:9 }}...</p>
+                        <a href="{% url "blogpage" pk=post.pk %}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+
+        {% if forloop.counter|divisibleby:3 %}
+
+
+            </div>
+            <div class="row">
+
+        {% endif %}
+
+    {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

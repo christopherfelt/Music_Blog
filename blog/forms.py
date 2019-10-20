@@ -1,0 +1,18 @@
+from django import forms
+from blog.models import Post
+
+class PostForm(forms.ModelForm):
+
+    post_image = forms.ImageField()
+
+    class Meta:
+
+        model = Post
+        fields = ('author', 'title', 'text', 'post_image')
+
+        widgets = {
+            'title':forms.TextInput(attrs={'class':'textinputclass'}),
+            'text':forms.Textarea(attrs={'class':'editable medium-editor-textarea postcontent'})
+        }
+
+

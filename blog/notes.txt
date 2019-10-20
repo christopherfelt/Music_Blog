@@ -1,0 +1,20 @@
+Build up library
+- Cards for each with at least four images in the image section (random?)
+- Deep Listen (at least four before moving on)
+- Politically Motivated Playlist (finish these)
+- Uncategorized
+
+Add some features to the drafts
+- a spotify playlist creator (complicated/later project)
+- Draft_list
+- Some kind of Database view
+
+Next Big Learning Experience
+- Creating Accounts
+-- Linking these to Spotify Accounts
+- AWS
+- Spotify
+
+Playlist Link
+- Reddit Playlist Constructors
+- Other forthcoming stuff

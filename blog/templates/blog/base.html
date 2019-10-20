@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load staticfiles %}
+
+    <meta charset="utf-8">
+    <title>Music Blog</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=News+Cycle|Staatliches" rel="stylesheet">
+
+
+
+  </head>
+  <body>
+    <div class="container-fluid full-width">
+      <div class="header">
+        <h1 class="fullname">Music Blog</h1>
+        <h1 class="shortname">MP</h1>
+      </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col col-sm-3 menu">
+            <p><a href=" {% url 'homepage' %}">Home</a></p>
+            <p><a href="{% url 'library' %}">Library</a></p>
+            <p><a href="{% url 'about' %}">About</a></p>
+          </div>
+
+         {% block content %}
+
+         {% endblock %}
+
+
+          <div class="col col-sm-3 right">
+
+          </div>
+        </div>
+    </div>
+
+  </body>
+  <script type="text/javascript" src="">
+
+  </script>
+</html>

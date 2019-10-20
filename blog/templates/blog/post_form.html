@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+    {% if user.is_authenticated %}
+
+        <form method="post" enctype="multipart/form-data">
+
+
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="save btn btn-default" name="button">
+                Submit Post
+            </button>
+
+            <script>var editor = new MediumEditor('.editable');</script>
+
+        </form>
+
+    {% else %}
+        <h2>What are you doing?</h2>
+        <h1>Get out of here!</h1>
+    {% endif %}
+
+
+
+
+{% endblock %}

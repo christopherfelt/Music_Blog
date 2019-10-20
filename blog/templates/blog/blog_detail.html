@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+        <div class="col col-sm-6 post edit-border">
+            <img class="blog-image" src="{{ post.post_image.url }}" alt="Hopefully a Picture" align=>
+            <h1>{{ post.title }}</h1>
+            <div>{{ post.text|safe }}</div>
+        </div>
+
+
+
+{% endblock %}
