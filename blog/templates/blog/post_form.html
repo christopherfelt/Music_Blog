@@ -16,7 +16,7 @@
                 Submit Post
             </button>
 
-            <script>var editor = new MediumEditor('.editable');</script>
+
 
         </form>
 
@@ -26,6 +26,10 @@
     {% endif %}
 
 
+{% endblock %}
 
+{% block scripts %}
+
+    <script>var editor = new MediumEditor('.editable');</script>
 
 {% endblock %}

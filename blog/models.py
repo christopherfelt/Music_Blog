@@ -10,7 +10,7 @@ class Post(models.Model):
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(default=timezone.now)
-    post_image = models.ImageField(upload_to='', default='none.png')
+    # post_image = models.ImageField(upload_to='', default='none.png')
 
 
     def get_absolute_url(self):
