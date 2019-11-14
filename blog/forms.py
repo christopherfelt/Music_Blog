@@ -3,12 +3,12 @@ from blog.models import Post
 
 class PostForm(forms.ModelForm):
 
-    post_image = forms.ImageField()
+    # post_image = forms.ImageField()
 
     class Meta:
 
         model = Post
-        fields = ('author', 'title', 'text')#'post_image'
+        fields = ('author', 'title', 'text')
 
         widgets = {
             'title':forms.TextInput(attrs={'class':'textinputclass'}),
