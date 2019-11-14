@@ -126,7 +126,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 #     os.path.join(BASE_DIR, 'static'),
 # )
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'PMP_Blog3/blog/media')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'new/'
