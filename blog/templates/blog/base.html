@@ -16,10 +16,22 @@
   </head>
   <body>
     <div class="container-fluid full-width">
-      <div class="header">
-        <h1 class="fullname">Music Blog</h1>
-        <h1 class="shortname">MP</h1>
-      </div>
+        <div class="row">
+            <div class="col col-sm-3">
+
+            </div>
+            <div class="col col-sm-6 header">
+                <h1 class="fullname"><a href="{% url 'homepage' %}">Music Blog</a></h1>
+                <h1 class="shortname"><a href="{% url 'homepage' %}">MP</a></h1>
+            </div>
+            <div class="col col-sm-3 my-auto">
+
+                <button type="button" class="btn btn-primary"><a href="{% url "social:begin" "spotify"%}">Login</a></button>
+
+            </div>
+
+        </div>
+
     </div>
     <div class="container-fluid">
         <div class="row">

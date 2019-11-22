@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('accounts/login/', views.LoginView.as_view(), name='login'),
     path('accounts/logout/', MyLogoutView.as_view(), name='logout'),
+    path('social/', include('social_django.urls'))
 ]

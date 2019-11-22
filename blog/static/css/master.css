@@ -153,6 +153,15 @@ img{
 
 }
 
+.spotify-button{
+  background-color: #186218;
+  border: solid #134e13;
+}
+
+.spotify-button:hover{
+  background-color: #279f27;
+  border: solid #134e13;
+}
 
 /* .edit-border{
   border: solid #F9A03F;

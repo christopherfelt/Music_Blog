@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'blog.apps.BlogConfig',
 ]
 
@@ -129,8 +130,35 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = 'new/'
+LOGIN_REDIRECT_URL = 'homepage'
 
 # D:\Projects\Python\Website1\Websites\PMP_Blog1\blog\media\none.png
 
+AUTHENTICATION_BACKENDS= (
+    'social_core.backends.spotify.SpotifyOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+)
+
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.social_auth.social_details',
+#     'social_core.pipeline.social_auth.social_uid',
+#     'social_core.pipeline.social_auth.auth_allowed',
+#     'social_core.pipeline.social_auth.social_user',
+#     'social_core.pipeline.user.get_username',
+#     'social_core.pipeline.user.create_user',
+#     'social_core.pipeline.social_auth.associate_user',
+#     'social_core.pipeline.social_auth.load_extra_data',
+#     'social_core.pipeline.user.user_details',
+#     # 'accounts.pipeline.save_profile',
+# )
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+# SOCIAL_AUTH_ALWAYS_ASSOCIATE = True
+
+SOCIAL_AUTH_SPOTIFY_KEY = 'c3543cff66824f1fa478fca67a8f3b97'
+SOCIAL_AUTH_SPOTIFY_SECRET = '2ecc21be0d5e4f119da8bab2308ca9ab'
+SOCIAL_AUTH_SPOTIFY_SCOPE = ['user-read-email', 'user-library-read']
+
 django_heroku.settings(locals())
+
