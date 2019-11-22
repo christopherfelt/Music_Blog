@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
+import credentials
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -156,8 +157,8 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 # SOCIAL_AUTH_ALWAYS_ASSOCIATE = True
 
-SOCIAL_AUTH_SPOTIFY_KEY = 'c3543cff66824f1fa478fca67a8f3b97'
-SOCIAL_AUTH_SPOTIFY_SECRET = '2ecc21be0d5e4f119da8bab2308ca9ab'
+SOCIAL_AUTH_SPOTIFY_KEY = credentials.SOCIAL_AUTH_SPOTIFY_KEY
+SOCIAL_AUTH_SPOTIFY_SECRET = credentials.SOCIAL_AUTH_SPOTIFY_SECRET
 SOCIAL_AUTH_SPOTIFY_SCOPE = ['user-read-email', 'user-library-read']
 
 django_heroku.settings(locals())
