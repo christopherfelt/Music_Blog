@@ -11,6 +11,7 @@ urlpatterns = [
     # path('accounts/login/draft/', views.DraftPostView.as_view(), name='draft'),
     path('accounts/login/new/', views.CreatePostView.as_view(), name='createpost'),
     path('library/', views.LibraryPageView.as_view(), name='library'),
+    path('add_playlist/', views.get_playlist, name='get_playlist')
 
 ]
 

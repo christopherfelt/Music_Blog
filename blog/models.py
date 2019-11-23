@@ -10,6 +10,8 @@ class Post(models.Model):
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(default=timezone.now)
+    playlist_id = models.CharField(max_length=255, default="7qP3wKi5ynkAUw7Jlmwj7v")
+    # spotify: playlist:7qP3wKi5ynkAUw7Jlmwj7v
     # post_image = models.ImageField(upload_to='', default='none.png')
 
 

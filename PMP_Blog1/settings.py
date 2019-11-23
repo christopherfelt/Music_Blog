@@ -159,7 +159,7 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 SOCIAL_AUTH_SPOTIFY_KEY = credentials.SOCIAL_AUTH_SPOTIFY_KEY
 SOCIAL_AUTH_SPOTIFY_SECRET = credentials.SOCIAL_AUTH_SPOTIFY_SECRET
-SOCIAL_AUTH_SPOTIFY_SCOPE = ['user-read-email', 'user-library-read']
+SOCIAL_AUTH_SPOTIFY_SCOPE = ['user-read-email', 'user-library-read', 'playlist-modify-public']
 
 django_heroku.settings(locals())
 
