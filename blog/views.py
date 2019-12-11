@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import (TemplateView, CreateView, ListView, DetailView, View)
+from django.views.generic.edit import (UpdateView, DeleteView)
 from django.http.response import HttpResponse
 from django.http import JsonResponse
 from blog.forms import PostForm
@@ -9,17 +10,11 @@ from django.urls import reverse_lazy
 from .models import Post, Post_Tracks
 import spotipy
 import spotipy.util as util
+from datetime import datetime
 
 # Create your views here.
 
-# def get_playlist_tracks(user_id, playlist_id, model):
-#     token = util.oauth2.SpotifyClientCredentials()
-#     cache_token = token.get_access_token()
-#     spotify = spotipy.Spotify(cache_token)
-#     playlist_json = spotify.user_playlist_tracks(user=user_id, playlist_id=playlist_id, fields='tracks')
-#     track_list = []
-#     for track_item in playlist_json:
-#         track_list.append(track_item['track']['id'])
+
 
 
 def get_playlist(request):
@@ -35,18 +30,6 @@ def get_playlist(request):
                 track_list_send.append(track[0])
 
             # return JsonResponse({'tracks_to_return':list(track_list)})
-            # return HttpResponse(playlist_id)
-
-            # user = request.user
-            # spotify_info = user.social_auth.get(provider='spotify')
-            # spotify_id = user.username
-            # token = spotify_info.extra_data['access_token']
-            # spotifyObject = spotipy.Spotify(auth=token)
-            # spotifyObject.user_playlist_create(user=spotify_id, name="MP_Playlist_Test2")
-            # new_playlist_json = spotifyObject.current_user_playlists(limit=1)
-            # new_playlist_id = new_playlist_json['items'][0]['id']
-            # # track_list = ['54vEMXZQbeQ8ui3GKsKcnf', '11UK2krGqZXnr0khXrK7b6','547fOfZqXcCovdHNjywpEi']
-            # spotifyObject.user_playlist_add_tracks(user=spotify_id, playlist_id=new_playlist_id, tracks=track_list_send, position=None)
 
             try:
                 user = request.user
@@ -54,7 +37,9 @@ def get_playlist(request):
                 spotify_id = user.username
                 token = spotify_info.extra_data['access_token']
                 spotifyObject = spotipy.Spotify(auth=token)
-                spotifyObject.user_playlist_create(user=spotify_id, name="MP_Playlist_Test2")
+                now = datetime.now()
+                now_string = now.strftime("%m%d%Y%H%M%S")
+                spotifyObject.user_playlist_create(user=spotify_id, name="MP-"+post_title + "_"+now_string)
                 new_playlist_json = spotifyObject.current_user_playlists(limit=1)
                 new_playlist_id = new_playlist_json['items'][0]['id']
                 # track_list = ['54vEMXZQbeQ8ui3GKsKcnf', '11UK2krGqZXnr0khXrK7b6','547fOfZqXcCovdHNjywpEi']
@@ -82,7 +67,6 @@ class LibraryPageView(ListView):
     def get_queryset(self):
         return Post.objects.filter().order_by('published_date')
 
-
 class BlogPageView(DetailView):
     template_name = "blog_detail.html"
     model = Post
@@ -90,15 +74,23 @@ class BlogPageView(DetailView):
 class AboutPageView(TemplateView):
     template_name = "about.html"
 
-# class ContactPageView(TemplateView):
-#     template_name = "static/discard/contact.html"
+class BlogPostDetail(DetailView):
+    model = Post
 
-# class DraftPostView(TemplateView):
-#     template_name = "static/discard/draft.html"
-#     login_url = '/login/'
-#     redirect_field_name = 'homepage.html'
-#     form_class = PostForm
-#     model = Post
+    def get_queryset(self):
+        return Post.objects.filter(user=self.request.pk)
+
+class BlogPostUpdate(UpdateView):
+    model = Post
+    fields = ['title', 'text', 'playlist_id']
+    success_url = reverse_lazy('blog_post_list')
+
+
+class BlogPostDelete(DeleteView):
+    model = Post
+    success_url = reverse_lazy('blog_post_list')
+
+
 
 class CreatePostView(CreateView):
     form_class = PostForm
